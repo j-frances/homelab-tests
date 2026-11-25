@@ -35,11 +35,8 @@ jobs:
   trivy:
     runs-on: ubuntu-latest
     steps:
-    - name: Extract metadata (tags, labels) for Docker
-      id: meta
-      uses: docker/metadata-action@v5
-      with:
-        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+    - name: Checkout code
+      uses: actions/checkout@v4
 
     - name: Run Trivy scan
       uses: aquasecurity/trivy-action@v0.36.0
