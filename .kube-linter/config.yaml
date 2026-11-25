@@ -1,0 +1,11 @@
+# KubeLinter configuration
+# https://docs.kubelinter.io/#/configuring-kubelinter
+#
+# Customize checks as needed. For example, to exclude a check:
+# checks:
+#   exclude:
+#     - "latest-tag"
+
+checks:
+  # Use kube-linter's default checks.
+  doNotAutoAddDefaults: false
