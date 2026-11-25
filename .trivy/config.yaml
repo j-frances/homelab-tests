@@ -1,7 +1,19 @@
-image-ref: ${{ steps.meta.outputs.tags }}
-format: 'sarif'
-output-file: 'trivy-results.sarif'
-exit-code: '1'
+# Trivy configuration
+# https://trivy.dev/latest/docs/references/configuration/config-file/
+#
+# The CI workflow currently sets scan options explicitly in
+# .github/workflows/main.yml. You can move shared defaults here and
+# pass this file with `trivy-config: .trivy/config.yaml` if desired.
+
+scan:
+  scanners:
+    - vuln
+    - secret
+    - misconfig
+
+severity:
+  - CRITICAL
+  - HIGH
+
 ignore-unfixed: true
-vuln-type: 'os,library'
-severity: 'CRITICAL,HIGH'
+exit-code: 1
